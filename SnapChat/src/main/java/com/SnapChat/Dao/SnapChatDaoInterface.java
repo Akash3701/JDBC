@@ -15,4 +15,8 @@ public interface SnapChatDaoInterface {
 	int editAccount(SnapChatEntity user);
 
 	int deleteAccount(SnapChatEntity se);
+
+	boolean loginAccount(SnapChatEntity se);
+
+	List<SnapChatEntity> searchAccount(String se);
 }

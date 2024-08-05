@@ -18,7 +18,8 @@ public class SnapChatView {
             System.out.println("Press 3 to View All Accounts");
             System.out.println("Press 4 to Edit Account");
             System.out.println("Press 5 to Delete Account");
-            System.out.println("Press 6 to Login Account");
+            System.out.println("Press 6 to Search Account");
+            System.out.println("Press 7 to Login Account");
             System.out.println("Enter your choice: ");
             
             int choice = sc.nextInt();
@@ -41,6 +42,9 @@ public class SnapChatView {
                     sci.deleteAccount();
                     break;
                 case 6:
+                    sci.searchAccount();
+                    break;
+                case 7:
                     sci.LoginAccount();
                     break;
                 default:

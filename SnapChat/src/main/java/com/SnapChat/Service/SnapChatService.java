@@ -34,4 +34,14 @@ public class SnapChatService implements SnapChatServiceInterface {
 		return sdi.deleteAccount(se);
 	}
 
+	@Override
+	public boolean loginAccount(SnapChatEntity se) {
+		return sdi.loginAccount(se);
+	}
+
+	@Override
+	public List<SnapChatEntity> searchAccount(String se) {
+		return sdi.searchAccount(se);
+	}
+
 }

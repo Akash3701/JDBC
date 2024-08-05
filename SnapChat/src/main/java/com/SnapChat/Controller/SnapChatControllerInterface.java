@@ -14,4 +14,6 @@ public interface SnapChatControllerInterface {
 
 	void LoginAccount();
 
+	void searchAccount();
+
 }

@@ -113,10 +113,10 @@ public class SnapChatController implements SnapChatControllerInterface {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			try {
 				throw new UserAccountNotFound("User not found");
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -127,27 +127,68 @@ public class SnapChatController implements SnapChatControllerInterface {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the email to delete the account: ");
 		String email = sc.next();
-		
+
 		SnapChatEntity se = new SnapChatEntity();
 		se.setEmail(email);
 
 		SnapChatServiceInterface ssi = new SnapChatService();
 		int i = ssi.deleteAccount(se);
-		
+
 		try {
 			if (i > 0) {
 				System.out.println("Account Deleted successfully");
 			} else {
 				throw new UserAccountNotFound("Failed to delete");
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void LoginAccount() {
-		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter the email id: ");
+		String email = sc.next();
+
+		System.out.println("Enter the password: ");
+		String password = sc.next();
+
+		SnapChatEntity se = new SnapChatEntity();
+		se.setEmail(email);
+		se.setPassword(password);
+
+		SnapChatServiceInterface ssi = new SnapChatService();
+		boolean isValidUser = ssi.loginAccount(se);
+
+		if (isValidUser) {
+			System.out.println("Login Successful!!");
+		} else {
+			System.out.println("Failed to login...");
+		}
+	}
+
+	@Override
+	public void searchAccount() {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter the email or username to search: ");
+		String searchQuery = sc.nextLine();
+
+		SnapChatServiceInterface ssi = new SnapChatService();
+		List<SnapChatEntity> users = ssi.searchAccount(searchQuery);
+
+		if (users.isEmpty()) {
+			System.out.println("No accounts found matching the search criteria.");
+		} else {
+			for (SnapChatEntity user : users) {
+				System.out.println("-------User Details-------");
+				System.out.println("Username: " + user.getUsername());
+				System.out.println("Email: " + user.getEmail());
+				System.out.println("Phone Number: " + user.getPhoneno());
+			}
+		}
 
 	}
 }

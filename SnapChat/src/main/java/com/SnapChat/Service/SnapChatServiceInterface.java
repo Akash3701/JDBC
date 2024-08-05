@@ -16,4 +16,8 @@ public interface SnapChatServiceInterface {
 
 	int deleteAccount(SnapChatEntity se);
 
+	boolean loginAccount(SnapChatEntity se);
+
+	List<SnapChatEntity> searchAccount(String se);
+
 }
